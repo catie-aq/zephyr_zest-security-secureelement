@@ -1,0 +1,13 @@
+# Copyright (c) 2026 CATIE
+# SPDX-License-Identifier: Apache-2.0
+
+config SHIELD_ZEST_SECURITY_SECUREELEMENT
+	def_bool $(shields_list_contains,zest_security_secureelement)
+
+config SHIELD_STSAFE_A1XX
+    def_bool $(shields_list_contains,stsafe_a1xx)
+
+config SHIELD_STSAFE_A1XX_INIT_PRIORITY
+    int
+    default 85
+    depends on SHIELD_STSAFE_A1XX

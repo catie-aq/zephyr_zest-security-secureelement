@@ -1,0 +1,8 @@
+if SHIELD_STSAFE_A1XX
+    config I2C
+        default y
+
+    config LIB_STSELIB
+        default y
+
+endif
