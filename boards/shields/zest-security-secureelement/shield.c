@@ -7,11 +7,11 @@
 #include <zephyr/drivers/gpio.h>
 #include <zephyr/logging/log.h>
 
-LOG_MODULE_REGISTER(stsafe_a1xx_shield);
+LOG_MODULE_REGISTER(zest_security_secureelement_shield);
 
 #include "stselib.h"
 
-int stsafe_a1xx_init(void) {
+int zest_security_secureelement_init(void) {
   int ret;
   const struct gpio_dt_spec stsafe_reset =
       GPIO_DT_SPEC_GET(ZEPHYR_USER_NODE, stsafereset_gpios);
@@ -30,5 +30,5 @@ int stsafe_a1xx_init(void) {
   return 0;
 }
 
-SYS_INIT(stsafe_a1xx_init, POST_KERNEL,
-         CONFIG_SHIELD_STSAFE_A1XX_INIT_PRIORITY);
+SYS_INIT(zest_security_secureelement_init, POST_KERNEL,
+         CONFIG_SHIELD_ZEST_SECURITY_SECUREELEMENT_INIT_PRIORITY);

@@ -1,4 +1,4 @@
-if SHIELD_STSAFE_A1XX
+if SHIELD_ZEST_SECURITY_SECUREELEMENT
     config I2C
         default y
 
