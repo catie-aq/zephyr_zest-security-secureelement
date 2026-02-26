@@ -9,10 +9,10 @@
 
 LOG_MODULE_REGISTER(zest_security_secureelement_shield);
 
+#include "stse_conf.h"
 #include "stselib.h"
 
 int zest_security_secureelement_init(void) {
-  int ret;
   const struct gpio_dt_spec stsafe_reset =
       GPIO_DT_SPEC_GET(ZEPHYR_USER_NODE, stsafereset_gpios);
 
