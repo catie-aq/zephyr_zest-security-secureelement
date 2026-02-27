@@ -6,22 +6,22 @@
 #include <zephyr/dt-bindings/gpio/sixtron-header.h>
 
 #define PERIPHERAL_ZEST_SECURITY_SECUREELEMENT_ALT(port)                                           \
-	i2c_zest_security_secureelement_##port : &sixtron_connector_##port##_i2c{};                \
-	gpio_zest_security_secureelement_##port : &sixtron_connector_##port{};
+	i2c_zest_security_secureelement_##port: &sixtron_connector_##port##_i2c{};                 \
+	gpio_zest_security_secureelement_##port: &sixtron_connector_##port{};
 
 #define DRIVERS_ZEST_SECURITY_SECUREELEMENT_ALT(port, rst_pin)                                     \
 	/                                                                                          \
 	{                                                                                          \
-		zephyr, user                                                                       \
+		zephyr,user                                                                        \
 		{                                                                                  \
-			stsafereset - gpios = <&gpio_zest_security_secureelement_##port rst_pin    \
+			stsafereset-gpios = <&gpio_zest_security_secureelement_##port rst_pin      \
 						       GPIO_ACTIVE_HIGH>;                          \
 		};                                                                                 \
 	};                                                                                         \
 	&i2c_zest_security_secureelement_##port                                                    \
 	{                                                                                          \
 		status = "okay";                                                                   \
-		clock - frequency = <I2C_BITRATE_STANDARD>;                                        \
+		clock-frequency = <I2C_BITRATE_STANDARD>;                                          \
 	};
 
 #define ZEST_SECURITY_SECUREELEMENT_ALT(port, rst_pin)                                             \
