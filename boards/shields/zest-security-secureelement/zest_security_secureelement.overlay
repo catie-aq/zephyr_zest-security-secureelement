@@ -9,7 +9,7 @@
     i2c_zest_security_secureelement_##port: &sixtron_connector_##port##_i2c {}; \
     gpio_zest_security_secureelement_##port: &sixtron_connector_##port {};
 
-#define DRIVERS_ZEST_SECURITY_SECUREELEMENT_ALT(port, rst_pin, i2c_addr) \
+#define DRIVERS_ZEST_SECURITY_SECUREELEMENT_ALT(port, rst_pin) \
     / { \
         zephyr,user { \
             stsafereset-gpios = <&gpio_zest_security_secureelement_##port rst_pin GPIO_ACTIVE_HIGH>; \
@@ -18,15 +18,11 @@
     &i2c_zest_security_secureelement_##port { \
         status = "okay"; \
         clock-frequency = <I2C_BITRATE_STANDARD>; \
-        stsafe_a1xx_##port: stsafe_a1xx@##i2c_addr { \
-            compatible = "st,stsafe-a1xx"; \
-            reg = <0x##i2c_addr>; \
-        }; \
     };
 
-#define ZEST_SECURITY_SECUREELEMENT_ALT(port, rst_pin, i2c_addr) \
+#define ZEST_SECURITY_SECUREELEMENT_ALT(port, rst_pin) \
     PERIPHERAL_ZEST_SECURITY_SECUREELEMENT_ALT(port) \
-    DRIVERS_ZEST_SECURITY_SECUREELEMENT_ALT(port, rst_pin, i2c_addr)
+    DRIVERS_ZEST_SECURITY_SECUREELEMENT_ALT(port, rst_pin)
 
 #define ZEST_SECURITY_SECUREELEMENT(port) \
-    ZEST_SECURITY_SECUREELEMENT_ALT(port, DIO1, 20) // default to R3 (DIO1) and I2C address 0x20
+    ZEST_SECURITY_SECUREELEMENT_ALT(port, DIO1)
