@@ -8,27 +8,27 @@
 #include <zephyr/logging/log.h>
 
 LOG_MODULE_REGISTER(zest_security_secureelement_shield);
+const struct gpio_dt_spec stsafe_reset = GPIO_DT_SPEC_GET(ZEPHYR_USER_NODE, stsafereset_gpios);
 
 #include "stse_conf.h"
 #include "stselib.h"
 
-int zest_security_secureelement_init(void) {
-  const struct gpio_dt_spec stsafe_reset =
-      GPIO_DT_SPEC_GET(ZEPHYR_USER_NODE, stsafereset_gpios);
+int zest_security_secureelement_init(void)
+{
 
-  if (!gpio_is_ready_dt(&stsafe_reset)) {
-    LOG_ERR("STSafe reset GPIO is not ready!");
-    return -1;
-  }
+	if (!gpio_is_ready_dt(&stsafe_reset)) {
+		LOG_ERR("STSafe reset GPIO is not ready!");
+		return -1;
+	}
 
-  if (gpio_pin_configure_dt(&stsafe_reset, GPIO_OUTPUT_ACTIVE) < 0) {
-    LOG_ERR("Failed to configure STSafe reset GPIO!");
+	if (gpio_pin_configure_dt(&stsafe_reset, GPIO_OUTPUT_ACTIVE) < 0) {
+		LOG_ERR("Failed to configure STSafe reset GPIO!");
 
-    return -1;
-  }
+		return -1;
+	}
 
-  return 0;
+	return 0;
 }
 
 SYS_INIT(zest_security_secureelement_init, POST_KERNEL,
-         CONFIG_SHIELD_ZEST_SECURITY_SECUREELEMENT_INIT_PRIORITY);
+	 CONFIG_SHIELD_ZEST_SECURITY_SECUREELEMENT_INIT_PRIORITY);
