@@ -12,17 +12,17 @@ LOG_MODULE_REGISTER(zest_security_secureelement_shield);
 #include "stse_conf.h"
 #include "stselib.h"
 
-const struct gpio_dt_spec stsafe_reset = GPIO_DT_SPEC_GET(ZEPHYR_USER_NODE, stsafereset_gpios);
+const struct gpio_dt_spec stsafereset = GPIO_DT_SPEC_GET(ZEPHYR_USER_NODE, stsafereset_gpios);
 
 int zest_security_secureelement_init(void)
 {
 
-	if (!gpio_is_ready_dt(&stsafe_reset)) {
+	if (!gpio_is_ready_dt(&stsafereset)) {
 		LOG_ERR("STSafe reset GPIO is not ready!");
 		return -1;
 	}
 
-	if (gpio_pin_configure_dt(&stsafe_reset, GPIO_OUTPUT_ACTIVE) < 0) {
+	if (gpio_pin_configure_dt(&stsafereset, GPIO_OUTPUT_ACTIVE) < 0) {
 		LOG_ERR("Failed to configure STSafe reset GPIO!");
 
 		return -1;

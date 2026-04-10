@@ -3,8 +3,8 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-#ifndef STSE_CONF_H
-#define STSE_CONF_H
+#ifndef SHIELD_STSE_CONF_H
+#define SHIELD_STSE_CONF_H
 
 #include <zephyr/device.h>
 #include <zephyr/drivers/gpio.h>
@@ -19,6 +19,6 @@
 #endif /* CONFIG_STSE_USE_RSP_POLLING */
 
 #define ZEPHYR_USER_NODE DT_PATH(zephyr_user)
-extern const struct gpio_dt_spec stsafe_reset;
+extern const struct gpio_dt_spec stsafereset;
 
 #endif /* STSE_CONF_H */
