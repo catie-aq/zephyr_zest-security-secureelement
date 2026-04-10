@@ -3,6 +3,7 @@
 
 config SHIELD_ZEST_SECURITY_SECUREELEMENT
 	def_bool $(shields_list_contains,zest_security_secureelement)
+	select LIB_STSELIB
 
 config SHIELD_ZEST_SECURITY_SECUREELEMENT_INIT_PRIORITY
     int

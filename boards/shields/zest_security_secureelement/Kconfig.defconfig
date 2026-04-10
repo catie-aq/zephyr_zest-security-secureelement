@@ -1,8 +1,4 @@
 if SHIELD_ZEST_SECURITY_SECUREELEMENT
     config I2C
         default y
-
-    config LIB_STSELIB
-        default y
-
 endif
